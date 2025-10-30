@@ -1,1 +1,1 @@
-Paste your public GitHub repo URL here before submitting: https://github.com/USERNAME/sticky-notes
+https://github.com/RuanWilmans/sticky-notes-part2.git
