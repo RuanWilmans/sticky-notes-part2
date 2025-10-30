@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Sticky Notes – List{% endblock title %}
+{% block content %}
+  <h2>{{ page_title }}</h2>
+  <a class="btn" href="{% url 'note_create' %}">Add Note</a>
+  <ul class="notes">
+    {% for note in notes %}
+      <li class="note">
+        <h3><a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a></h3>
+        <p class="muted">by {{ note.author.name }}</p>
+        <p>{{ note.content|truncatechars:140 }}</p>
+        <small>Created {{ note.created_at }}</small>
+      </li>
+    {% empty %}
+      <li>No notes yet. <a href="{% url 'note_create' %}">Create one</a>.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

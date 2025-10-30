@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{{ note.title }} – Sticky Notes{% endblock title %}
+{% block content %}
+  <article class="note">
+    <h2>{{ note.title }}</h2>
+    <p class="muted">by {{ note.author.name }}</p>
+    <p>{{ note.content }}</p>
+    <small>Created {{ note.created_at }}</small>
+    <div class="actions">
+      <a class="btn" href="{% url 'note_update' pk=note.pk %}">Edit</a>
+      <form method="post" action="{% url 'note_delete' pk=note.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn danger">Delete</button>
+      </form>
+      <a class="btn" href="{% url 'note_list' %}">Back</a>
+    </div>
+  </article>
+{% endblock content %}
